@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+# (c) 2010 Joseph Adams
+# Information see: http://github.com/Jcla/jcla-helloworld
 
 
 
