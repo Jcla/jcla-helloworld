@@ -2,7 +2,9 @@
 # Information see: http://github.com/Jcla/jcla-helloworld
 
 
-import re
+
+
+import wsgiref.handlers
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util
 
@@ -19,6 +21,9 @@ class MainHandler(webapp.RequestHandler):
 
   def get(self, pattern):
     self.response.out.write("""
+    <head> 
+      <title>jcla-helloworld</title>     
+    </head>
     <h1>Eureka</h1>
     <a href='/inputform'>Inputform</a>
     """)
@@ -32,10 +37,8 @@ def main():
   application = webapp.WSGIApplication([
   ('/inputform', InputformHandler), 
   ('/(.*)', MainHandler),
-  ],
-                                       debug=True)
-  util.run_wsgi_app(application)
-
+  ],debug=True)
+  wsgiref.handlers.CGIHandler().run(application)
 
 if __name__ == '__main__':
   main()
