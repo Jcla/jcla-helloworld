@@ -2,7 +2,7 @@
 # Information see: http://github.com/Jcla/jcla-helloworld
 
 
-
+import re
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util
 
@@ -18,12 +18,15 @@ class InputformHandler(webapp.RequestHandler):
 class MainHandler(webapp.RequestHandler):
 
   def get(self, pattern):
-    self.response.out.write('Hello world!')
+    self.response.out.write("""
+    <h1>Eureka</h1>
+    <a href='/inputform'>Inputform</a>
+    """)
   #  self.response.out.write(pattern)
     
   def post(self, pattern):
     m = self.request.get('msg')
-    self.response.out.write('You posted the message %s' % (m))
+    self.response.out.write('You posted the message %s ' % (m))
 
 def main():
   application = webapp.WSGIApplication([
